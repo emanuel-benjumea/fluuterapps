@@ -57,10 +57,10 @@ print('[Lifecycle] build: ...');
 print('[Lifecycle] setState: ...');
 print('[Lifecycle] dispose: ...');
 
-
+```
 ## ▶️ Ejecución rápida
 
 ```bash
 flutter pub get
 flutter run
-
+```
