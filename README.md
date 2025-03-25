@@ -24,14 +24,17 @@ Estas son las pantallas (vistas) principales implementadas en la app:
   
 - **`detail_screen.dart`**  
   Muestra un parámetro recibido desde la pantalla principal mediante `go_router`.
+  
 ![detail_screen](https://github.com/user-attachments/assets/a01ef00e-35d2-4091-b919-b26ad1e24f9f)
 
 - **`tab_widget.dart`**  
   Implementa una vista con `TabBar` y `TabBarView` que contiene 3 secciones.
+  
 ![tab_widget](https://github.com/user-attachments/assets/7d89b43b-48bc-4c84-8fdd-011b97fce20e)
 
 - **`lifecycle_widget.dart`**  
   Vista basada en `StatefulWidget` que evidencia el ciclo de vida del widget usando `print()` en consola.
+  
 ![lifecycle_widget](https://github.com/user-attachments/assets/adb0b829-f262-4928-82f3-e928640d1f8d)
 
 ---
