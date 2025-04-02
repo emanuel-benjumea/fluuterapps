@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../screens/home_screen.dart';
-import '../screens/detail_screen.dart';
+
+import '../views/home_page.dart';
+import '../views/lista_estudiantes_page.dart';
+import '../views/contador_page.dart';
+import '../views/tarea_pesada_page.dart';
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
-      name: 'home',
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => const HomePage(),
     ),
     GoRoute(
-      path: '/detail/:message',
-      name: 'detail',
-      builder: (context, state) {
-        final message = state.pathParameters['message'] ?? 'Sin mensaje';
-        return DetailScreen(message: message);
-      },
+      path: '/estudiantes',
+      builder: (context, state) => const ListaEstudiantesPage(),
+    ),
+    GoRoute(
+      path: '/contador',
+      builder: (context, state) => const ContadorPage(),
+    ),
+    GoRoute(
+      path: '/tarea-pesada',
+      builder: (context, state) => const TareaPesadaPage(),
     ),
   ],
 );
