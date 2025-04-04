@@ -1,91 +1,93 @@
-# 🚀 Taller Flutter: Navegación, Widgets y Ciclo de Vida
+# 🍽 Taller 3 - Flutter + The Meal DB API
 
-## 📱 Descripción
-
-Esta aplicación Flutter fue desarrollada como parte del **taller de navegación, widgets personalizados y ciclo de vida** en Flutter.
-
-El proyecto implementa:
-
-- ✅ Navegación entre pantallas con paso de parámetros usando `go_router`.
-- ✅ Widgets personalizados: `GridView`, `TabBar`, y un widget con ciclo de vida (`StatefulWidget`).
-- ✅ Evidencia del ciclo de vida de un `StatefulWidget` a través de impresiones en consola (`print()`).
-- ✅ Diseño limpio y modular usando una estructura de carpetas organizada.
-
-## 🖥️ Vistas de la aplicación
-
-Estas son las pantallas (vistas) principales implementadas en la app:
-
-- **`home_screen.dart`**  
-  Pantalla inicial con botones que navegan a otras vistas.
-
-
-![homreScreen](https://github.com/user-attachments/assets/d7dcea08-3be0-41fa-8a76-36bcf36a1739)
-
-  
-- **`detail_screen.dart`**  
-  Muestra un parámetro recibido desde la pantalla principal mediante `go_router`.
-  
-![detail_screen](https://github.com/user-attachments/assets/a01ef00e-35d2-4091-b919-b26ad1e24f9f)
-
-- **`tab_widget.dart`**  
-  Implementa una vista con `TabBar` y `TabBarView` que contiene 3 secciones.
-  
-![tab_widget](https://github.com/user-attachments/assets/7d89b43b-48bc-4c84-8fdd-011b97fce20e)
-
-- **`lifecycle_widget.dart`**  
-  Vista basada en `StatefulWidget` que evidencia el ciclo de vida del widget usando `print()` en consola.
-  
-![lifecycle_widget](https://github.com/user-attachments/assets/adb0b829-f262-4928-82f3-e928640d1f8d)
+Este proyecto es el resultado del Taller 3 de Flutter, donde se construyó una aplicación que consume la API [TheMealDB](https://www.themealdb.com/api.php) para mostrar un listado de recetas y los detalles de cada una.
 
 ---
 
-## 🧭 Navegación y paso de parámetros
+## 🛠 Tecnologías usadas
 
-- Se usa la librería `go_router` para gestionar las rutas.
-- Desde `HomeScreen`, se navega a `DetailScreen` con un mensaje como parámetro.
-- `DetailScreen` muestra el parámetro recibido en pantalla.
-- Se utiliza `context.push(...)` para mantener el historial de navegación y permitir regresar con la flecha en el AppBar.
-
----
-
-## 🧱 Widgets personalizados
-
-### 1. **GridWidget (GridView)**
-- Muestra una lista de elementos en forma de cuadrícula.
-- Implementado con `GridView.builder()`.
-
-### 2. **TabWidget (TabBar + TabBarView)**
-- Incluye 3 pestañas:
-  - GridView
-  - Información textual
-  - Contenido adicional
-
-### 3. **LifecycleWidget (StatefulWidget)**
-- Contador interactivo con botón.
-- Imprime en consola:
-  - `initState()`
-  - `didChangeDependencies()`
-  - `build()`
-  - `setState()`
-  - `dispose()`
+- Flutter
+- Dart
+- Go Router
+- HTTP package
 
 ---
 
-## 🔁 Ciclo de Vida del StatefulWidget
+## 📲 Características
 
-En `lifecycle_widget.dart`, se usa un `StatefulWidget` para imprimir en consola el ciclo de vida del widget:
+### 1. Pantalla principal - Listado
+- Realiza petición HTTP GET a la API.
+- Muestra un listado de recetas usando `ListView.builder`.
+- Incluye nombre e imagen de cada receta.
+- Maneja estados de carga, error o lista vacía.
 
-```dart
-print('[Lifecycle] initState: ...');
-print('[Lifecycle] didChangeDependencies: ...');
-print('[Lifecycle] build: ...');
-print('[Lifecycle] setState: ...');
-print('[Lifecycle] dispose: ...');
+### 2. Pantalla de Detalle
+- Navega desde la lista usando `context.push()`.
+- Recupera el `id` desde los parámetros de ruta.
+- Muestra información detallada: nombre, imagen, instrucciones.
+- Incluye navegación de regreso usando `context.pop()` o botón ←.
+
+### 3. Manejo de estado
+- `FutureBuilder` para gestionar:
+  - Estado de carga (spinner).
+  - Estado de éxito (datos).
+  - Estado de error (mensajes).
+
+---
+
+## 📁 Estructura del proyecto
 
 ```
-## ▶️ Ejecución rápida
+lib/
+├── main.dart
+├── listado_page.dart
+├── detalle_page.dart
+├── models/
+│   ├── meal.dart
+│   └── meal_detail.dart
+├── services/
+    └── meal_service.dart
+```
+
+---
+
+## 🚀 Instrucciones para correr el proyecto
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu_usuario/taller3_mealdb_flutter.git
+   ```
+2. Entra a la carpeta del proyecto:
+   ```bash
+   cd taller3_mealdb_flutter
+   ```
+3. Instala las dependencias:
+   ```bash
+   flutter pub get
+   ```
+4. Ejecuta la app:
+   ```bash
+   flutter run
+   ```
+
+---
+
+## 🌱 GitFlow sugerido
 
 ```bash
-flutter pub get
-flutter run
+git checkout -b feature/api-connection
+git commit -am "Listado y detalle con API"
+git checkout dev
+git merge feature/api-connection
+git push origin dev
 ```
+
+---
+
+## 📸 Capturas (opcional)
+_Agrega capturas de pantalla de la app funcionando._
+
+---
+
+## 📌 Créditos
+Este proyecto fue desarrollado como parte del Taller 3 para la materia de desarrollo con Flutter. Utiliza la API gratuita de [TheMealDB](https://www.themealdb.com/api.php).
